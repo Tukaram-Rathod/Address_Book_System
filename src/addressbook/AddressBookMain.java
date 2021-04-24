@@ -3,11 +3,9 @@ package addressbook;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-
 public class AddressBookMain {
     private ArrayList<Contacts> data=new ArrayList<Contacts>();
     Scanner sc = new Scanner(System.in);
-
     //method to read string value from user
     public String readString(String displayMessage){
         Scanner sc = new Scanner(System.in);
@@ -15,7 +13,6 @@ public class AddressBookMain {
         String input=sc.nextLine();
         return input;
     }
-
     //method to get index of Contacts object in addressBook
     public int indexOfContacts(){
         System.out.println();
@@ -30,7 +27,6 @@ public class AddressBookMain {
         }
         return -1;
     }
-
     //method to add Contacts to address book
     public void addContacts(){
         System.out.println();
@@ -46,7 +42,6 @@ public class AddressBookMain {
         this.data.add(newEntry);
         System.out.println(firstName+" The Data Added Successfully To The  AddressBook.");
     }
-
     //method to edit conatcts details using first name
     public void editContacts(){
         int index=this.indexOfContacts();
@@ -91,41 +86,26 @@ public class AddressBookMain {
                     System.out.println("invalid Input!");
             }
         }
-        else{
-
+        else
             System.out.println("No such Contact found!");
-        }
     }
-
     //method to delete contact using their first name
     public void deleteContacts(){
-
         int index=this.indexOfContacts();
-
         if(index != -1){
-
             Contacts p=this.data.remove(index);
             System.out.println("Contacts "+p.getFirstName()+" removed successfully.");
         }
-        else{
-
+        else
             System.out.println("No one with these details found!");
-        }
     }
-
     //method to show contact details
     public void showContacts(){
-
         int index=this.indexOfContacts();
-
-        if(index != -1){
-
+        if(index != -1)
             this.data.get(index).showContactsDetails();
-        }
-        else{
-
+        else
             System.out.println("No one with these details found!");
-        }
     }
 
     //method to select which operation we want to do in AddressBook
