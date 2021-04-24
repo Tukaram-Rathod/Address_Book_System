@@ -97,6 +97,22 @@ public class AddressBookMain {
         }
     }
 
+    //method to delete contact using their first name
+    public void deleteContacts(){
+
+        int index=this.indexOfContacts();
+
+        if(index != -1){
+
+            Contacts p=this.data.remove(index);
+            System.out.println("Contacts "+p.getFirstName()+" removed successfully.");
+        }
+        else{
+
+            System.out.println("No one with these details found!");
+        }
+    }
+
     //method to show contact details
     public void showContacts(){
 
@@ -117,7 +133,7 @@ public class AddressBookMain {
         int choice;
         while(true)
         {
-            System.out.println("\n *****Enter Your Choice*****\n1.Add Contact\t\t2.Edit Contact\n3.show Contact\t\t4.Exit");
+            System.out.println("\n *****Enter Your Choice*****\n1.Add Contact\t\t2.Edit Contact\n3.show Contact\t\t4.Delete Contact\n5.Exit");
             choice=sc.nextInt();
             switch(choice) {
                 case 1: addContacts();
@@ -126,7 +142,9 @@ public class AddressBookMain {
                     break;
                 case 3: showContacts();
                     break;
-                case 4: System.exit(0);
+                case 4: deleteContacts();
+                    break;
+                case 5: System.exit(0);
                     break;
                 default: System.out.println("Invalid Input ");
             }
