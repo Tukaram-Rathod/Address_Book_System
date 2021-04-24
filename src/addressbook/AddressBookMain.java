@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class AddressBookMain {
+
     private ArrayList<Contacts> data=new ArrayList<Contacts>();
     Scanner sc = new Scanner(System.in);
     //method to read string value from user
@@ -130,10 +131,6 @@ public class AddressBookMain {
             }
         }
     }
-    //main method
-    public static void main(String[] args) {
-        AddressBookMain addressBookMain=new AddressBookMain();
-        addressBookMain.Menu();
-    }
+
 }
 
