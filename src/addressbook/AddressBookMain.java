@@ -183,6 +183,12 @@ public class AddressBookMain {
     public void countByState(){
         System.out.println(contactbook.stream().collect(Collectors.groupingBy((Contacts C) ->C.getState(),Collectors.counting())));
     }
+    /* Description - sort the entries in the address book alphabetically by Person’s name */
+    public void sortPerson()
+    {
+        System.out.println("------Names are sorted alphabetical order----");
+        contactbook.stream().sorted(Comparator.comparing(contactInfo -> contactInfo.getFirstName())).forEach(contactInfo -> System.out.println(contactInfo));
+    }
 
 
     public static void main(String[] args)
@@ -195,7 +201,7 @@ public class AddressBookMain {
         while(option!=2) {
             System.out.println("\n *****Enter Your Choice*****\n1.Add Contact\t\t\t\t2.Edit Contact\n3.Display Contact\t\t\t4.Delete Contact\n" +
                                 "5.Add New Address Book\t\t6.Display New Address Book\n7.Search Person By City\t\t8.Search Person By State" +
-                                "\n9.Count by city\t\t\t\t10.Count by state");
+                                "\n9.Count by city\t\t\t\t10.Count by state\n11.sorting names in order");
             int choice = sc.nextInt();
 
             switch (choice) {
@@ -229,6 +235,9 @@ public class AddressBookMain {
                     break;
                 case 10:
                     address.countByState();
+                    break;
+                case 11:
+                    address.sortPerson();
                     break;
                 default:
                     System.out.println("select valid operation[1/2]");
