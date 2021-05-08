@@ -133,7 +133,21 @@ public class AddressBookMain {
             System.out.println(addressBookList);
         }
     }
-   //
+    /* to check duplicate entry if find duplicate are not allowed */
+    public void duplicateCheck(String first)
+    {
+        for (int k = 0; k < contactbook.size(); k++)
+        {
+            String contactName = contactbook.get(k).firstName;
+            if (first.equals(contactName))
+                System.out.println("This Person is Already Present");
+            else {
+                System.out.println("You can Add this Person");
+                break;
+            }
+        }
+    }
+
     public static void main(String[] args)
     {
         AddressBookMain address = new AddressBookMain();
