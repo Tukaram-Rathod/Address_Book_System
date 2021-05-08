@@ -217,7 +217,7 @@ public class AddressBookMain {
                     System.out.println("select valid operation[1/2]");
 
             }
-            System.out.println("Enter choice(1-Enter/2-Exit):");
+            System.out.println("Enter choice(1-Enter \t\t 2-Exit):");
             int option1=sc.nextInt();
             if (option1==2)
             {
