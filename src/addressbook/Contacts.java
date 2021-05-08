@@ -3,16 +3,16 @@ package addressbook;
 import java.util.Scanner;
 //Contact class
 public class Contacts {
-    private String firstName;
-    private String lastName;
-    private String address;
-    private String city;
-    private String state;
-    private String zip;
-    private String mobileNo;
-    private String email;
+    String firstName;
+    String lastName;
+    String address;
+    String city;
+    String state;
+    int zip;
+    long mobileNo;
+    String email;
 
-    public Contacts(String firstName, String lastName, String address, String city, String state, String zip,String mobileNo, String email) {
+    public Contacts(String firstName, String lastName, String address, String city, String state, int zip,long mobileNo, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
@@ -64,19 +64,19 @@ public class Contacts {
         this.state = state;
     }
 
-    public String getZip() {
+    public int getZip() {
         return zip;
     }
 
-    public void setZip(String zip) {
+    public void setZip(int zip) {
         this.zip = zip;
     }
 
-    public String getMobNo() {
+    public long getMobNo() {
         return mobileNo;
     }
 
-    public void setMobNo(String mobileNo) {
+    public void setMobNo(long mobileNo) {
         this.mobileNo = mobileNo;
     }
 
@@ -100,19 +100,6 @@ public class Contacts {
                 ", mobNo='" + mobileNo + '\'' +
                 ", email='" + email + '\'' +
                 '}';
-    }
-    public Contacts() {
-
-    }
-    public void showContactsDetails(){
-        System.out.println("First name => "+ this.getFirstName());
-        System.out.println("Last  name => "+ this.getLastName());
-        System.out.println("Address => "+ this.getAddress());
-        System.out.println("City => " + this.getCity());
-        System.out.println("State => "+ this.getState());
-        System.out.println("Zip Code => "+ this.getZip());
-        System.out.println("Mobile Number => "+ this.getMobNo());
-        System.out.println("Address => "+ this.getEmail());
     }
 }
 
