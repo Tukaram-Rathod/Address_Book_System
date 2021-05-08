@@ -13,7 +13,6 @@ public class AddressBookMain {
     {
         System.out.println("Enter First Name");
         String first = scan.nextLine();
-        //duplicateCheck(first);
         System.out.println("Enter Last Name");
         String last = scan.nextLine();
         System.out.println("Enter Address");
