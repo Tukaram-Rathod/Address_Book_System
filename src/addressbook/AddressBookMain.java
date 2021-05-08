@@ -173,6 +173,16 @@ public class AddressBookMain {
             System.out.println("Name : " + i.nextElement());
         }
     }
+    /* Description - to count  person by city name */
+    public void countByCity(){
+        System.out.println(contactbook.stream().collect(Collectors.groupingBy((Contacts C) -> C.getCity())));
+        System.out.println((contactbook.stream().collect(Collectors.groupingBy((Contacts C) -> C.getCity(),Collectors.counting()))));
+    }
+
+    /* Description - to count  person by state name */
+    public void countByState(){
+        System.out.println(contactbook.stream().collect(Collectors.groupingBy((Contacts C) ->C.getState(),Collectors.counting())));
+    }
 
 
     public static void main(String[] args)
@@ -184,7 +194,8 @@ public class AddressBookMain {
         int option=sc.nextInt();
         while(option!=2) {
             System.out.println("\n *****Enter Your Choice*****\n1.Add Contact\t\t\t\t2.Edit Contact\n3.Display Contact\t\t\t4.Delete Contact\n" +
-                                "5.Add New Address Book\t\t6.Display New Address Book\n7.Search Person By City\t\t8.Search Person By State");
+                                "5.Add New Address Book\t\t6.Display New Address Book\n7.Search Person By City\t\t8.Search Person By State" +
+                                "\n9.Count by city\t\t\t\t10.Count by state");
             int choice = sc.nextInt();
 
             switch (choice) {
@@ -212,6 +223,12 @@ public class AddressBookMain {
                     break;
                 case 8:
                     address.searchPersonByState();
+                    break;
+                case 9:
+                    address.countByCity();
+                    break;
+                case 10:
+                    address.countByState();
                     break;
                 default:
                     System.out.println("select valid operation[1/2]");
