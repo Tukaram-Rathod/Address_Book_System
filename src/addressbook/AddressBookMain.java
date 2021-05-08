@@ -1,7 +1,7 @@
 package addressbook;
 
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class AddressBookMain {
     //Add multiple persons
@@ -147,17 +147,44 @@ public class AddressBookMain {
             }
         }
     }
+    /* Description - to search person by state wise */
+    public void searchPersonByState()
+    {
+        System.out.println("Enter the state name to search Person by state name");
+        String userState = scan.nextLine();
+        Dictionary Statewisedict = new Hashtable();
+        contactbook.stream().filter(map -> map.getState().contains(userState)).forEach(contactbook -> Statewisedict.put(contactbook.getFirstName(),userState));
+        System.out.println("State Name: " + userState);
+        for (Enumeration i = Statewisedict.keys(); i.hasMoreElements();)
+        {
+            System.out.println("Name : " + i.nextElement());
+        }
+    }
+    /* Description - to search person by city name */
+    public void searchPersonByCity()
+    {
+        System.out.println("Enter City name to search Person by city name");
+        String userCity = scan.nextLine();
+        Dictionary Citywisedict = new Hashtable();
+        contactbook.stream().filter(map -> map.getCity().contains(userCity)).forEach(contactbook -> Citywisedict.put(contactbook.getFirstName(),userCity));
+        System.out.println("City Name: " + userCity);
+        for (Enumeration i = Citywisedict.keys(); i.hasMoreElements();)
+        {
+            System.out.println("Name : " + i.nextElement());
+        }
+    }
+
 
     public static void main(String[] args)
     {
         AddressBookMain address = new AddressBookMain();
-        System.out.println("-------------Welcome To the ADDRESS_BOOK_MANAGEMENT-SYSTEM------------------");
+        System.out.println("-------------Welcome To the ADDRESS_BOOK_MANAGEMENT_SYSTEM------------------");
         Scanner sc=new Scanner(System.in);
-        System.out.println("Enter valid option to perform Book-Manager_Application(1-->ENTER,2-->EXIT):");
+        System.out.println("Enter Valid Option (1-->ENTER,2-->EXIT):");
         int option=sc.nextInt();
         while(option!=2) {
             System.out.println("\n *****Enter Your Choice*****\n1.Add Contact\t\t\t\t2.Edit Contact\n3.Display Contact\t\t\t4.Delete Contact\n" +
-                                "5.Add New Address Book\t\t6.Display New Address Book");
+                                "5.Add New Address Book\t\t6.Display New Address Book\n7.Search Person By City\t\t8.Search Person By State");
             int choice = sc.nextInt();
 
             switch (choice) {
@@ -180,7 +207,12 @@ public class AddressBookMain {
                 case 6:
                     address.displayAddressBook();
                     break;
-
+                case 7:
+                    address.searchPersonByCity();
+                    break;
+                case 8:
+                    address.searchPersonByState();
+                    break;
                 default:
                     System.out.println("select valid operation[1/2]");
 
