@@ -189,6 +189,28 @@ public class AddressBookMain {
         System.out.println("------Names are sorted alphabetical order----");
         contactbook.stream().sorted(Comparator.comparing(contactInfo -> contactInfo.getFirstName())).forEach(contactInfo -> System.out.println(contactInfo));
     }
+    /* Description - sort the entries in the address book alphabetically by Person’s city */
+    public void sortPersonByCity(){
+
+        System.out.println("sorting the persons by using city names");
+        Comparator<Contacts> compareFirstName=Comparator.comparing(Contacts::getFirstName);//first name comparator
+        Comparator<Contacts> compareCity=Comparator.comparing(Contacts::getCity);
+        //Compare by first name and then city (multiple fields)
+        Comparator<Contacts> compareBoth =compareFirstName.thenComparing(compareCity);
+        contactbook.stream().sorted( compareBoth ).forEach(contactInfo -> System.out.println(contactInfo));
+    }
+
+    /* Description - sort the entries in the address book alphabetically by Person’s zip code */
+    public void sortPersonByZip(){
+
+        System.out.println("sorting the persons by using postal codes ");
+        Comparator<Contacts> compareFirstName=Comparator.comparing(Contacts::getFirstName);
+        Comparator<Contacts> comparePostal=Comparator.comparing(Contacts::getZip);//Zip comparator
+        //Compare by first name and then zip code (multiple fields)
+        Comparator<Contacts> compareBoth =compareFirstName.thenComparing(comparePostal);
+        contactbook.stream().sorted( compareBoth ).forEach(contactInfo -> System.out.println(contactInfo));
+    }
+
 
 
     public static void main(String[] args)
@@ -201,7 +223,8 @@ public class AddressBookMain {
         while(option!=2) {
             System.out.println("\n *****Enter Your Choice*****\n1.Add Contact\t\t\t\t2.Edit Contact\n3.Display Contact\t\t\t4.Delete Contact\n" +
                                 "5.Add New Address Book\t\t6.Display New Address Book\n7.Search Person By City\t\t8.Search Person By State" +
-                                "\n9.Count by city\t\t\t\t10.Count by state\n11.sorting names in order");
+                                "\n9.Count By City\t\t\t\t10.Count By State\n11.Sorting Names In Order\t12.Sorting Persons By City\n" +
+                                "13.Sorting Persons By Zip");
             int choice = sc.nextInt();
 
             switch (choice) {
@@ -239,11 +262,17 @@ public class AddressBookMain {
                 case 11:
                     address.sortPerson();
                     break;
+                case 12:
+                    address.sortPersonByCity();
+                    break;
+                case 13:
+                    address.sortPersonByZip();
+                    break;
                 default:
                     System.out.println("select valid operation[1/2]");
 
             }
-            System.out.println("Enter choice(1-Enter \t\t 2-Exit):");
+            System.out.println("Enter choice(1-Enter \t 2-Exit):");
             int option1=sc.nextInt();
             if (option1==2)
             {
